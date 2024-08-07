@@ -79,9 +79,7 @@
   <script src="js/templatemo-script.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.5/xlsx.min.js"></script>  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-  <script>
 
-  </script>
   <script>
 
     var archivos = new Array();
@@ -126,11 +124,19 @@
       else alert("Hubo un error. Por favor revisar los documentos");
     }
 
+    const {ipcRenderer} = require("electron");
+
     function descargar() {
+      ipcRenderer.on("download complete", (event, file) => {
+          console.log(file); // Full file path
+      });
       window.location.href = "/archivos/" + nombreProyecto + ".lsp";
     }
 
     function descargarBAT() {
+      ipcRenderer.on("download complete", (event, file) => {
+          console.log(file); // Full file path
+      });
       window.location.href = "/archivos/reemplazoCaracteres.bat";
     }
 

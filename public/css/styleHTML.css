@@ -177,3 +177,9 @@ h4 {
 .dropdown a:hover {background-color: #ddd;}
 
 .show {display: block;}
+
+body {
+  min-width: 500px !important;
+  min-height: 500px !important;
+  background-color: #222222;
+}

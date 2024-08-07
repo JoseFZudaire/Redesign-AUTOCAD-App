@@ -129,8 +129,13 @@
       else alert("Hubo un error. Por favor revisar los documentos");
     }
 
+    // const {ipcRenderer} = require("electron");
+
     function descargar() {
-      window.location.href = "/archivos/" + nombreProyecto + ".lsp";
+      ipcRenderer.on("download complete", (event, file) => {
+          console.log(file); // Full file path
+      });
+      // window.location.href = "/archivos/" + nombreProyecto + ".lsp";
     }
 
   </script>
