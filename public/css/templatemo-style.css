@@ -611,11 +611,15 @@ figure.effect-julia:hover p {
     .intro-img-1 {
         margin-right: 4%;
         margin-bottom: 0;
-        width: 48%
+        /* width: 48%; */
+        width: auto !important;
+        height: auto !important;
     }
 
     .intro-img-2 {
-        width: 48%;
+        /* width: 48%; */
+        width: auto !important;
+        height: auto !important;
     }
 }
 
