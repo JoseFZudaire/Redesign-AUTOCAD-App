@@ -4,40 +4,104 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/slick.css';
 import './css/styleHTML.css';
 import './css/templatemo-style.css';
+import fs from 'fs';
+
 
 function App() {
 
   var archivos = new Array();
   var nombreProyecto = "error";
 
-  const postInformation = async () => {
+  const explode = '(while (setq sset (ssget "X" \'((0 . "INSERT")))) (sssetfirst nil sset) (C:Burst)) (princ) (command"_-purge""B""*""N")';
+
+  const createLSPFile = (commandLine, nroProyecto) => {
+    var file = fs.createWriteStream("./public/archivos/" + nroProyecto + ".lsp");
+
+    file.on('error', function(err) {
+        console.log("Hubo un error creando el archivo");
+        return 400;
+    });
+    file.write(commandLine);
+    file.end();
+    return 200;   
+
+  }
+
+  const processCommands = (archivos, comando) => {
+    
+    var resultadoPrograma = 400; //ERROR
+
+    // console.log(req.body);
+    
+    var xCoordinate = 0;
+    var yCoordinate = 0;
+    var command = "";
+
+    var nroProyecto = (archivos[0].split('-'))[0];
+    console.log("El nro de proyecto es: ", nroProyecto);
+
+    for(var i = 0; i < archivos.length; i++) {
+        var file = archivos[i];
+        if(file.slice(-3) == "dwg") {
+            var filename = file;
+            var filenameReplaced = filename;
+            var caracteresAReemplazar = ['á', 'é', 'í', 'ó', 'ú', 'Á', 'É', 'Í', 'Ó', 'Ú'];
+            var caracteresNuevos = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
+
+            for (var c = 0; c < caracteresAReemplazar.length; c++) {
+                filenameReplaced = filenameReplaced.replace(caracteresAReemplazar[c], caracteresNuevos[c], function(err) {
+                });
+            }
+
+            console.log("Filename replaces is: ", filenameReplaced);
+
+            fs.rename(filenameReplaced, filename.replace(), function(err) {
+            });
+
+            command += '(command"_insert""' + filename + '""scale""1""rotate""0" "' + xCoordinate + ',' + yCoordinate + '" "1""1""1""0")';
+            console.log("Command is: ", command)
+            xCoordinate += 500;
+            if(xCoordinate == 5000) {
+                xCoordinate = 0;
+                yCoordinate -= 380;
+            }
+
+            command += explode;
+        }
+    }
+
+    // command += explode;
+    var commandLine = `(defun c:${comando}() ${command} )`;
+    console.log(commandLine);
+
+    resultadoPrograma = createLSPFile(commandLine, nroProyecto);
+
+    return nroProyecto;
+
+    // return res.status(resultadoPrograma).send({ proyecto: nroProyecto});
+
+  }
+
+  const postInformation = () => {
     console.log(archivos);
 
     var comando = document.getElementById('nombreComando').value;
 
     console.log(comando);
 
-    const response = await fetch("http://localhost:5500/formPost",
-        {
-          method: 'POST',
-          headers: {
-            "Content-Type": 'application/json'
-          },
-          body: JSON.stringify({
-            archivos, comando
-          })
-        });
+    const response = processCommands(archivos, comando);
         
-    if(response.ok) {
+    // if(response.ok) {
       alert("Se pudieron mergear los documentos");
 
       var buttonDescarga = document.getElementById("descarga");
       buttonDescarga.disabled = false;
 
-      nombreProyecto = (await response.json())["proyecto"];
+      // nombreProyecto = (response.json())["proyecto"];
+      nombreProyecto = processCommands(archivos, comando);
       
-    }
-    else alert("Hubo un error. Por favor revisar los documentos");
+    // }
+    // else alert("Hubo un error. Por favor revisar los documentos");
   }
 
   const descargar = () => {
