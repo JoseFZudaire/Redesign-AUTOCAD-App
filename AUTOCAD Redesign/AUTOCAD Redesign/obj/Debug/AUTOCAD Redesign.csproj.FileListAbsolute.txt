@@ -1,0 +1,10 @@
+C:\Users\JH0213\Documents\023 - Redesign page joining AUTOCAD\AUTOCAD Redesign\AUTOCAD Redesign\bin\Debug\AUTOCAD Redesign.exe.config
+C:\Users\JH0213\Documents\023 - Redesign page joining AUTOCAD\AUTOCAD Redesign\AUTOCAD Redesign\bin\Debug\AUTOCAD Redesign.exe
+C:\Users\JH0213\Documents\023 - Redesign page joining AUTOCAD\AUTOCAD Redesign\AUTOCAD Redesign\bin\Debug\AUTOCAD Redesign.pdb
+C:\Users\JH0213\Documents\023 - Redesign page joining AUTOCAD\AUTOCAD Redesign\AUTOCAD Redesign\obj\Debug\AUTOCAD Redesign.csproj.AssemblyReference.cache
+C:\Users\JH0213\Documents\023 - Redesign page joining AUTOCAD\AUTOCAD Redesign\AUTOCAD Redesign\obj\Debug\AUTOCAD_Redesign.Form1.resources
+C:\Users\JH0213\Documents\023 - Redesign page joining AUTOCAD\AUTOCAD Redesign\AUTOCAD Redesign\obj\Debug\AUTOCAD_Redesign.Properties.Resources.resources
+C:\Users\JH0213\Documents\023 - Redesign page joining AUTOCAD\AUTOCAD Redesign\AUTOCAD Redesign\obj\Debug\AUTOCAD Redesign.csproj.GenerateResource.cache
+C:\Users\JH0213\Documents\023 - Redesign page joining AUTOCAD\AUTOCAD Redesign\AUTOCAD Redesign\obj\Debug\AUTOCAD Redesign.csproj.CoreCompileInputs.cache
+C:\Users\JH0213\Documents\023 - Redesign page joining AUTOCAD\AUTOCAD Redesign\AUTOCAD Redesign\obj\Debug\AUTOCAD Redesign.exe
+C:\Users\JH0213\Documents\023 - Redesign page joining AUTOCAD\AUTOCAD Redesign\AUTOCAD Redesign\obj\Debug\AUTOCAD Redesign.pdb
